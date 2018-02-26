@@ -6,10 +6,12 @@ var speed = 0.01;
 var param = 0.1;
 
 function setup() {
+
     createCanvas(400, 400, WEBGL);//, WEBGL);
     ma = atan(cos(QUARTER_PI));
     maxD = 200;
     directionalLight(200, 200, 200, -1, -1, 0.25);
+
 }
 
 function draw() {
