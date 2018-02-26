@@ -16,35 +16,15 @@
 </head>
 <body>
 
-
-<p>To start a game: enter a word or nothing to choose a random word </p>
-<p>To resume a game: enter nothing (if there is no game to resume above follows) </p>
-
-<form id="init">
-    <input id="password" type="password">
-</form>
 <i></i>
-<p>Type a guess</p>
+<p>Energy Flow</p>
 
-<form id="guess">
+<form id="meter">
     <input id="text" type="text">
 </form>
 <script>
 
-
-
-    $( "#init" ).submit(function( event ) {
-        event.preventDefault();
-        if ($( "input:password" ).val().split(" ").length === 1) {
-            $("div#foo").load("upvote");
-            $( "input:password" ).val("");
-            return;
-        }
-        $( "i" ).text( "Not valid!" ).show().fadeOut( 1000 );
-
-    });
-
-    $( "#guess" ).submit(function( event ) {
+    $( "#meter" ).submit(function( event ) {
         event.preventDefault();
         if ($("input:text").val() != "") {
             $("div#foo").load("guess_" + $("input:text").val());
@@ -54,13 +34,15 @@
     });
 </script>
 
-<p></p>
 
-<a href="" id="the_link">click here to show answer </a>
+<p>
+    <a href="meter.html" id="the_link" class="button" onclick="loadDoc()">Visual Energy consumption Meter</a>
 
-<p></p>
+</p>
 
-<div id="foo">additional content from the server will go here.</div>
+
+
+
 
 </body>
 </html>

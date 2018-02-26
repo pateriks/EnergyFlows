@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align: center;">Energy Flow</h1>
+<p>
+    <a href="meter.html" class="button" onclick="loadDoc()">Visual Energy consumption Meter</a>
+
+</p>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", 'http://130.237.212.171:8888/meter', true);
+  xhttp.send();
+}
+</script>
+
+<p>
+    <a href="id.html" class="buttton" onclick="loadid()">Visual Energy consumption id</a>
+</p>
+
+<script>
+
+function loadid() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", 'http://130.237.212.171:8888/id', true);
+  xhttp.send();
+}
+</script>
+
+<p>
+    <a href="3d.html">Visual Energy consumption 3d</a>
+</p>
+<p>
+    <a href="3da.html">Visual Energy consumption 3da</a>
+</p>
+</body>
+</html>
