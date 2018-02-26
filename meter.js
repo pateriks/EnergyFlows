@@ -54,10 +54,12 @@ function redyellow(i){
 }
 
 function setup() {
-    color = 0;
+   color = 0;
+   param = 0.5;
    console.log('Welcome');
    createCanvas(1600, 1600);
    angleMode(DEGREES);
+
 }
 
 function draw() {
@@ -65,29 +67,37 @@ function draw() {
    background(0);
    translate(800, 800);
    rotate(0);
+
+   imageMode(CENTER);
+   image(this.img, 0, 0, this.r, this.r);
+
  //  let hr = hour();
  //  let mn = minute();
  //  let ms = seconds();
    strokeWeight(16);
    noFill();
    cirkus += speed;
-   //arc(0, 0, 260, 260, 0, hourAngle);
 
-   if(color < 1) {
-       for (let i = 0; i < 40; i++) {
-           red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-           green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-           blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-           redgreen(i);
-           stroke(red, green, blue);
-           point(0, i * 15 - 400);
-       }
-   }else{
-       for (let i = 0; i < 40; i++) {
-           blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-           redyellow(i);
-           stroke(red, green, blue);
-           point(0, i * 17 - 400);
-       }
-   }
+   //arc(0, 0, 260, 260, 0, hourAngle);
+    for (let w = 0; w < 1000; w+= 200) {
+        if (color < 1) {
+            for (let i = 0; i < 40; i++) {
+                red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                redgreen(i);
+                stroke(red, green, blue);
+                point(w-400, i * 15 - 400);
+            }
+        } else {
+            for (let i = 0; i < 40; i++) {
+                red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                redyellow(i);
+                stroke(red, green, blue);
+                point(w-400, i * 17 - 400);
+            }
+        }
+    }
 }
