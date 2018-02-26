@@ -4,9 +4,6 @@ let ma;
 let maxD;
 var speed = 0.01;
 var param = 0.1;
-
-
-
 function setup() {
     createCanvas(400, 400, WEBGL);//, WEBGL);
     ma = atan(cos(QUARTER_PI));
