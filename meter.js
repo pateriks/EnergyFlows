@@ -9,16 +9,36 @@ var param = 10;
 var speed = 0.1;
 var batteri = 0; //av eller på
 
-funtion redgreen(){
+function green(){
+    stroke(0, fullgreen, 0);
+}
+
+function red(){
+    stroke(fullred, 0, 0);
+}
+
+function yellow(){
+    stroke(fullred, fullgreen, 0);
+}
+
+funtion redgreen(int i){
     if (i < param * 40) {
-        stroke(blue, green, blue);
+        red()
     } else {
-        stroke(red, blue, blue);
+        green()
+    }
+}
+
+funtion redyellow(int i){
+    if (i < param * 40) {
+        red()
+    } else {
+        yellow()
     }
 }
 
 function setup() {
-   console.log('hej');
+   console.log('Welcome');
    createCanvas(1600, 1600);
    angleMode(DEGREES);
 }
@@ -36,20 +56,16 @@ function draw() {
    cirkus += speed;
    //arc(0, 0, 260, 260, 0, hourAngle);
 
-   if(color == redgreen) {
+   if(color == 0) {
        for (let i = 0; i < 40; i++) {
            blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-
+           redgreen(i);
            point(0, i * 17 - 400);
        }
-   }else if(color == redellow){
+   }else if(color == 1){
        for (let i = 0; i < 40; i++) {
            blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-           if (i < param * 40) {
-               stroke(blue, green, blue);
-           } else {
-               stroke(red, blue, blue);
-           }
+           redyellow(i);
            point(0, i * 17 - 400);
        }
    }
