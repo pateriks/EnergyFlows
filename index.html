@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>HANGMAN</title>
+    <link type="text/css" href="main.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a#the_link").click(function() {
+                $("div#foo").load("hangman.html");
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+
+<p>To start a game: enter a word or nothing to choose a random word </p>
+<p>To resume a game: enter nothing (if there is no game to resume above follows) </p>
+
+<form id="init">
+    <input id="password" type="password">
+</form>
+<i></i>
+<p>Type a guess</p>
+
+<form id="guess">
+    <input id="text" type="text">
+</form>
+<script>
+
+
+
+    $( "#init" ).submit(function( event ) {
+        event.preventDefault();
+        if ($( "input:password" ).val().split(" ").length === 1) {
+            $("div#foo").load("upvote");
+            $( "input:password" ).val("");
+            return;
+        }
+        $( "i" ).text( "Not valid!" ).show().fadeOut( 1000 );
+
+    });
+
+    $( "#guess" ).submit(function( event ) {
+        event.preventDefault();
+        if ($("input:text").val() != "") {
+            $("div#foo").load("guess_" + $("input:text").val());
+            $("input:text").val("");
+            return;
+        }
+    });
+</script>
+
+<p></p>
+
+<a href="" id="the_link">click here to show answer </a>
+
+<p></p>
+
+<div id="foo">additional content from the server will go here.</div>
+
+</body>
+</html>
