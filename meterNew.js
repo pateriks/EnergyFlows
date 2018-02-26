@@ -79,31 +79,25 @@ function draw() {
    cirkus += speed;
 
    //arc(0, 0, 260, 260, 0, hourAngle);
-    for (let w = 0; w < 1000; w+= 250) {
+    for (let w = 0; w < 1000; w+= 200) {
         if (color < 1) {
             for (let i = 0; i < 40; i++) {
                 red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-
-                if(w < 1) {
-                    redgreen(i);
-                    stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
-                }
-
+                redgreen(i);
+                stroke(red, green, blue);
+                point(w-400, i * 15 - 400);
             }
         } else {
             for (let i = 0; i < 40; i++) {
                 red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+                redyellow(i);
+                stroke(red, green, blue);
+                point(w-400, i * 17 - 400);
 
-                if(w < 1) {
-                    redgreen(i);
-                    stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
-                }
             }
         }
     }
