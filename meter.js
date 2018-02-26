@@ -21,19 +21,19 @@ function yellow(){
     stroke(fullred, fullgreen, 0);
 }
 
-funtion redgreen(int i){
+function redgreen(i){
     if (i < param * 40) {
-        red()
+        red();
     } else {
-        green()
+        green();
     }
 }
 
-funtion redyellow(int i){
+function redyellow(i){
     if (i < param * 40) {
-        red()
+        red();
     } else {
-        yellow()
+        yellow();
     }
 }
 
@@ -62,11 +62,11 @@ function draw() {
            redgreen(i);
            point(0, i * 17 - 400);
        }
-   }else if(color == 1){
+   }/*else if(color == 1){
        for (let i = 0; i < 40; i++) {
            blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
            redyellow(i);
            point(0, i * 17 - 400);
        }
-   }
+   }*/
 }
