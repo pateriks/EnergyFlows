@@ -24,7 +24,8 @@ var bg;
 
 function preload() {
     img = loadImage('Building.png');
-    img2 = loadImage('EV2.png');
+    img2 = loadImage('EV6.png');
+    img3 = loadImage('Battery.png');
 }
 
 function Fgreen(pulsate){
@@ -188,7 +189,11 @@ function draw() {
         gp = gp + 1;
     }
      translate(0,0)
-        image (img2, 210, 0, 320, 800, 70, 0, 400, 800);
+
+        image (img2, 250, 100, 300, 600, 0, 0, 680,750 );
+     translate(0,0)
+
+             image (img3, 600, 0, 180, 800, 0, 0, 700, 800);
     push();
     translate(width/2, height/2);
     for (let w = 0; w < width; w+= width/8) {
@@ -209,13 +214,13 @@ function draw() {
                 if(w == width/8) {
                     battery(i)
                     stroke(red, green, blue);
-                    point(-(w - offset), i * width/size - offset);
+                    point(-(w - offset) + 90, i * width/size - offset);
                 }
 
                 if(w == width/4) {
                     redgreen(i, true);
                     stroke(red, green, blue);
-                    point(-(w - offset), i * width/size - offset);
+                    point(-(w - offset ) + 5, i * width/size - offset);
                 }
 
             }
@@ -236,13 +241,13 @@ function draw() {
                 if(w == width/8) {
                     battery()
                     stroke(red, green, blue);
-                    point(-(w - offset), i * width/size - offset);
+                    point(-(w - offset) + 90, i * width/size - offset);
                 }
 
                 if(w == width/4) {
                     redyellow(i, true)
                     stroke(red, green, blue);
-                    point(-(w - offset), i * width/size - offset);
+                    point(-(w - offset + 100) + 5, i * width/size - offset);
                 }
 
             }
