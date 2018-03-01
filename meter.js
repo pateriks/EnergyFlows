@@ -24,6 +24,7 @@ var bg;
 
 function preload() {
     img = loadImage('Building.png');
+    img2 = loadImage('EV2.png');
 }
 
 function Fgreen(pulsate){
@@ -186,6 +187,8 @@ function draw() {
         console.log(width);
         gp = gp + 1;
     }
+     translate(0,0)
+        image (img2, 210, 0, 320, 800, 70, 0, 400, 800);
     push();
     translate(width/2, height/2);
     for (let w = 0; w < width; w+= width/8) {
@@ -248,4 +251,6 @@ function draw() {
     }
     pop();
     image (img, 0, 0, 200, 800, 49, 0, 300, 800);
+
+
 }
