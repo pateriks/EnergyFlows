@@ -3,23 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Visulization</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a#the_link").click(function() {
+                $("div#foo").load("hangman.html");
+            });
+
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+    $("#votes").click(function(){
+        $.post("http://130.237.212.171:8888",
+        {
+          name: "meter"
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+
+    });
+});
+</script>
 </head>
 <body>
 <h1 style="text-align: center;">Energy Flow</h1>
 
 <p>
-    <a href="meter.html" class="button" onclick="loadDoc()">Visual Energy consumption Meter</a>
-
+    <a id= "meter" href="meter.html" class="button" >Visual Energy consumption Meter</a>
 </p>
 
+
+<div id="foo"> count </div>
+
 <script>
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'http://130.237.212.171:8888/meter', true);
-        xhttp.send();
-    }
+$('#vote').click(function() {
+    window.location.href = 'http://130.237.212.171:8888/meter';
+    return false;
+});
 </script>
 
+
+
+
+
+<script>
+    $( "#vo" ).click(function( event ) {
+        $("div#foo").load("http://130.237.212.171:8888");
+        return;
+    });
+</script>
+
+
+
+
+
+
+
+<button id="votes">Vote</button>
 <p>
     <a href="id.html" class="button" onclick="loadid()">Visual Energy consumption id</a>
 </p>
@@ -28,13 +71,6 @@
     <a href="3d.html">Visual Energy consumption 3d</a>
 </p>
 
-<script>
-    function loadid() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'http://130.237.212.171:8888/id', true);
-        xhttp.send();
-    }
-</script>
 
 <p>
     <a href="3da.html">Visual Energy consumption 3da</a>
