@@ -7,6 +7,7 @@ let sec = 0;
 let cirkus = 0;
 let gp = 0;
 let flip = 0;
+let numLeds = 24;
 
 var puls = 0;
 var color = 0;
@@ -15,11 +16,11 @@ var param2 = 0.5;
 var speed = 0.1;
 var charging = 0; //av eller på
 var batteri = 0; //av eller på
-var numLeds = 0;
 var speed2 = 0;
 var offset = 0;
 var size = 0;
 var img;
+var bg;
 
 function preload() {
     img = loadImage('Building.png');
@@ -65,15 +66,14 @@ function Fwhite(pulsate){
 function Fblack(pulsate){
     let pulsActive = pulsate || false;
     if(!puls || !pulsActive) {
-        red = 0;
-        green = 0;
-        blue = 0;
+        red = bg;
+        green = bg;
+        blue = bg;
     }
-
 }
 
 function redgreen(i, a1, pulseActive){
-    if (i < param * numLeds) {
+    if (i > param * numLeds) {
         if(blink() && !batteri) {
             Fred(pulseActive);
         }else if(a1 && !batteri){
@@ -93,7 +93,7 @@ function redgreen(i, a1, pulseActive){
 }
 
 function redyellow(i, a1, pulseActive){
-    if (i < param * numLeds) {
+    if (i > param * numLeds) {
         if(blink() && !batteri) {
             Fred(pulseActive);
         }else if(a1 && !batteri){
@@ -122,7 +122,7 @@ function blink() {
 
 function battery(i) {
 
-    if(i > param2*numLeds){
+    if(i < param2*numLeds){
         Fwhite();
     }else{
         if(!charging) {
@@ -132,7 +132,7 @@ function battery(i) {
                 Fwhite();
             }
         }else{
-            if(i < (gp%(param2*numLeds))) {
+            if(i > (gp%(param2*numLeds))) {
                 Fgreen();
                 green = map(sin(abs(i - ((gp%(param2*numLeds))/2))*100), -1, 1, 0 , 255);
             }else{
@@ -144,18 +144,15 @@ function battery(i) {
 }
 
 function setup() {
-
+    bg = 200;
    color = 0;
    param = 0.5;
    param2 = 0.6;
-   numLeds = 30;
    offset = -100;
    createCanvas(800, 800);
    size = 30;
    console.log('Welcome' + height + width);
    angleMode(DEGREES);
-
-
 
 }
 
@@ -168,21 +165,17 @@ function pulsate(i) {
 function draw() {
     rotate(0);
 
-    background(160);
+    background(bg);
     //image(img, 0, 0);
-    image (img, 200, 100, 200, 400, 100, 0, 100, 0);
+    //image (img, 0, 0, 200, 800, 50, 0, 300, 800);
     sec = second();
-   
+    bg = map(hour(), 0, 24, 0, 255);
+
    if(numLeds > (height/16)){
        numLeds = (height/16)
    }
 
-   offset = (map(numLeds, 0, (height/16), 0, width/2) + 150-3);
-
-
-   translate(width/2, height/2);
-   rotate(180);
-
+   offset = (map(numLeds, 0, (height/16), 0, width/2) + 100);
 
 
    strokeWeight(width/size);
@@ -193,6 +186,8 @@ function draw() {
         console.log(width);
         gp = gp + 1;
     }
+    push();
+    translate(width/2, height/2);
     for (let w = 0; w < width; w+= width/8) {
         if (color < 1) {
 
@@ -205,19 +200,19 @@ function draw() {
                 if(w < 1) {
                     redgreen(i, null, true);
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-275, i * width/size - offset);
                 }
 
                 if(w == width/8) {
                     battery(i)
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-(w - offset), i * width/size - offset);
                 }
 
                 if(w == width/4) {
                     redgreen(i, true);
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-(w - offset), i * width/size - offset);
                 }
 
             }
@@ -232,22 +227,25 @@ function draw() {
                 if(w < 1) {
                     redyellow(i, null, true)
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-275, i * width/size - offset);
                 }
 
                 if(w == width/8) {
                     battery()
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-(w - offset), i * width/size - offset);
                 }
 
                 if(w == width/4) {
                     redyellow(i, true)
                     stroke(red, green, blue);
-                    point((w - offset), i * width/size - offset);
+                    point(-(w - offset), i * width/size - offset);
                 }
 
             }
         }
+
     }
+    pop();
+    image (img, 0, 0, 200, 800, 49, 0, 300, 800);
 }

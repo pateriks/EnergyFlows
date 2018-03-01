@@ -16,7 +16,7 @@ function setup() {
 
 function draw() {
 
-    background(100);
+    bg(100);
     ortho(-400, 400, 400, -400, 0, 1000);
     rotateX(-ma);
     ma -= speed;

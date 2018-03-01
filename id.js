@@ -15,7 +15,7 @@ function setup() {
 
 function draw() {
 
-   background(60);
+   bg(60);
    translate(200, 200);
    //rotate(-90);
    rectMode(CENTER);

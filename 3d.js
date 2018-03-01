@@ -14,7 +14,7 @@ function setup() {
 
 function draw() {
     rotateX(-ma);
-    background(100);
+    bg(100);
     ortho(-400, 400, 400, -400, 0, 1000);
 
 

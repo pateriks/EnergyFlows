@@ -392,7 +392,7 @@
    *
    * function draw() {
    *   var val = slider.value();
-   *   background(val);
+   *   bg(val);
    * }
    * </code></div>
    *
@@ -407,7 +407,7 @@
    *
    * function draw() {
    *   var val = slider.value();
-   *   background(val, 100, 100, 1);
+   *   bg(val, 100, 100, 1);
    * }
    * </code></div>
    */
@@ -442,7 +442,7 @@
    * var button;
    * function setup() {
    *   createCanvas(100, 100);
-   *   background(0);
+   *   bg(0);
    *   button = createButton('click me');
    *   button.position(19, 19);
    *   button.mousePressed(changeBG);
@@ -450,7 +450,7 @@
    *
    * function changeBG() {
    *   var val = random(255);
-   *   background(val);
+   *   bg(val);
    * }
    * </code></div>
    */
@@ -542,7 +542,7 @@
    *
    * function setup() {
    *   textAlign(CENTER);
-   *   background(200);
+   *   bg(200);
    *   sel = createSelect();
    *   sel.position(10, 10);
    *   sel.option('pear');
@@ -553,7 +553,7 @@
    *
    * function mySelectEvent() {
    *   var item = sel.value();
-   *   background(200);
+   *   bg(200);
    *   text('it is a' + item + '!', 50, 50);
    * }
    * </code></div>
@@ -658,7 +658,7 @@
    *
    * function draw() {
    *   var val = radio.value();
-   *   background(val);
+   *   bg(val);
    *   text(val, width / 2, height / 2);
    * }
    * </code></div>
@@ -675,7 +675,7 @@
    * }
    *
    * function draw() {
-   *   background(200);
+   *   bg(200);
    *   var val = radio.value();
    *   if (val) {
    *     text('item cost is $' + val, width / 2, height / 2);
@@ -1296,7 +1296,7 @@
    * <div><code>
    * function setup() {
    *   var div = createDiv('').size(10, 10);
-   *   div.style('background-color', 'orange');
+   *   div.style('bg-color', 'orange');
    *   div.center();
    * }
    * </code></div>
@@ -1486,7 +1486,7 @@
    * <div><code class='norender'>
    * var col = color(25, 23, 200, 50);
    * var button = createButton('button');
-   * button.style('background-color', col);
+   * button.style('bg-color', col);
    * button.position(10, 10);
    * </code></div>
    * <div><code class='norender'>
@@ -1497,7 +1497,7 @@
    * <div><code class='norender'>
    * var myDiv;
    * function setup() {
-   *   background(200);
+   *   bg(200);
    *   myDiv = createDiv('I like gray.');
    *   myDiv.position(20, 20);
    * }
@@ -1849,7 +1849,7 @@
      * var ele;
      *
      * function setup() {
-     *   background(250);
+     *   bg(250);
      *
      *   //p5.MediaElement objects are usually created
      *   //by calling the createAudio(), createVideo(),
@@ -1923,7 +1923,7 @@
    *   //a new p5.MediaElement via createAudio().
    *   ele = createAudio('assets/beat.mp3');
    *
-   *   background(250);
+   *   bg(250);
    *   textAlign(CENTER);
    *   text('Click to Play!', width / 2, height / 2);
    * }
@@ -1937,7 +1937,7 @@
    *     //This will start the audio sample.
    *     ele.play();
    *
-   *     background(200);
+   *     bg(200);
    *     text('You clicked Play!', width / 2, height / 2);
    *   }
    * }
@@ -1981,7 +1981,7 @@
    *   //Here we create a p5.MediaElement object
    *   //using the createAudio() function.
    *   ele = createAudio('assets/beat.mp3');
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to play!', width / 2, height / 2);
    * }
@@ -1990,7 +1990,7 @@
    *   //here we test if the mouse is over the
    *   //canvas element when it's clicked
    *   if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-   *     background(200);
+   *     bg(200);
    *
    *     if (sampleIsPlaying) {
    *       //if the sample is currently playing
@@ -2045,7 +2045,7 @@
    *   //Here we create a p5.MediaElement object
    *   //using the createAudio() function.
    *   ele = createAudio('assets/lucky_dragons.mp3');
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to play!', width / 2, height / 2);
    * }
@@ -2054,7 +2054,7 @@
    *   //here we test if the mouse is over the
    *   //canvas element when it's clicked
    *   if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-   *     background(200);
+   *     bg(200);
    *
    *     if (sampleIsPlaying) {
    *       //Calling pause() on our
@@ -2107,7 +2107,7 @@
    *   //Here we create a p5.MediaElement object
    *   //using the createAudio() function.
    *   ele = createAudio('assets/lucky_dragons.mp3');
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to loop!', width / 2, height / 2);
    * }
@@ -2116,7 +2116,7 @@
    *   //here we test if the mouse is over the
    *   //canvas element when it's clicked
    *   if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-   *     background(200);
+   *     bg(200);
    *
    *     if (!sampleIsLooping) {
    *       //loop our sound element until we
@@ -2163,7 +2163,7 @@
    *   //Here we create a p5.MediaElement object
    *   //using the createAudio() function.
    *   ele = createAudio('assets/beat.mp3');
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to play!', width / 2, height / 2);
    * }
@@ -2172,7 +2172,7 @@
    *   //here we test if the mouse is over the
    *   //canvas element when it's clicked
    *   if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-   *     background(200);
+   *     bg(200);
    *
    *     if (sampleIsPlaying) {
    *       ele.noLoop();
@@ -2222,7 +2222,7 @@
    *   // In this example we create
    *   // a new p5.MediaElement via createAudio().
    *   ele = createAudio('assets/lucky_dragons.mp3');
-   *   background(250);
+   *   bg(250);
    *   textAlign(CENTER);
    *   text('Click to Play!', width / 2, height / 2);
    * }
@@ -2232,7 +2232,7 @@
    *   // Volume must be between 0.0 and 1.0
    *   ele.volume(0.2);
    *   ele.play();
-   *   background(200);
+   *   bg(200);
    *   text('You clicked Play!', width / 2, height / 2);
    * }
    * </code></div>
@@ -2251,13 +2251,13 @@
    *
    * function draw() {
    *   if (counter === 0) {
-   *     background(0, 255, 0);
+   *     bg(0, 255, 0);
    *     text('volume(0.9)', width / 2, height / 2);
    *   } else if (counter === 1) {
-   *     background(255, 255, 0);
+   *     bg(255, 255, 0);
    *     text('volume(0.5)', width / 2, height / 2);
    *   } else if (counter === 2) {
-   *     background(255, 0, 0);
+   *     bg(255, 0, 0);
    *     text('volume(0.1)', width / 2, height / 2);
    *   }
    * }
@@ -2313,7 +2313,7 @@
    *   //using the createAudio() function.
    *   ele = createAudio('assets/beat.mp3');
    *   ele.loop();
-   *   background(200);
+   *   bg(200);
    *
    *   button = createButton('2x speed');
    *   button.position(100, 68);
@@ -2385,7 +2385,7 @@
    *   //In this example we create
    *   //a new p5.MediaElement via createAudio().
    *   ele = createAudio('assets/lucky_dragons.mp3');
-   *   background(250);
+   *   bg(250);
    *   textAlign(CENTER);
    *   text('start at beginning', width / 2, height / 2);
    * }
@@ -2398,13 +2398,13 @@
    *     // as this produces the same result as
    *     // play()
    *     ele.play().time(0);
-   *     background(200);
+   *     bg(200);
    *     text('jump 2 sec in', width / 2, height / 2);
    *     beginning = false;
    *   } else {
    *     // here we jump 2 seconds into the sound
    *     ele.play().time(2);
-   *     background(250);
+   *     bg(250);
    *     text('start at beginning', width / 2, height / 2);
    *     beginning = true;
    *   }
@@ -2436,13 +2436,13 @@
    *   //In this example we create
    *   //a new p5.MediaElement via createAudio().
    *   ele = createAudio('assets/doorbell.mp3');
-   *   background(250);
+   *   bg(250);
    *   textAlign(CENTER);
    *   text('Click to know the duration!', 10, 25, 70, 80);
    * }
    * function mouseClicked() {
    *   ele.play();
-   *   background(200);
+   *   bg(200);
    *   //ele.duration dislpays the duration
    *   text(ele.duration() + ' seconds', width / 2, height / 2);
    * }
@@ -2651,13 +2651,13 @@
    *   //In this example we create
    *   //a new p5.MediaElement via createAudio()
    *   ele = createAudio('assets/lucky_dragons.mp3');
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to Show Controls!', 10, 25, 70, 80);
    * }
    * function mousePressed() {
    *   ele.showControls();
-   *   background(200);
+   *   bg(200);
    *   text('Controls Shown', width / 2, height / 2);
    * }
    * </code></div>
@@ -2682,13 +2682,13 @@
    *   //a new p5.MediaElement via createAudio()
    *   ele = createAudio('assets/lucky_dragons.mp3');
    *   ele.showControls();
-   *   background(200);
+   *   bg(200);
    *   textAlign(CENTER);
    *   text('Click to hide Controls!', 10, 25, 70, 80);
    * }
    * function mousePressed() {
    *   ele.hideControls();
-   *   background(200);
+   *   bg(200);
    *   text('Controls hidden', width / 2, height / 2);
    * }
    * </code></div>
@@ -2738,7 +2738,7 @@
    * @example
    * <div><code>
    * function setup() {
-   *   background(255, 255, 255);
+   *   bg(255, 255, 255);
    *
    *   var audioEl = createAudio('assets/beat.mp3');
    *   audioEl.showControls();
@@ -2753,7 +2753,7 @@
    * }
    *
    * function changeBackground(val) {
-   *   background(val);
+   *   bg(val);
    * }
    * </code></div>
    */
@@ -2779,7 +2779,7 @@
    * <div><code>
    * var audioEl, id1, id2;
    * function setup() {
-   *   background(255, 255, 255);
+   *   bg(255, 255, 255);
    *   audioEl = createAudio('assets/beat.mp3');
    *   audioEl.showControls();
    *   // schedule five calls to changeBackground
@@ -2795,7 +2795,7 @@
    *   audioEl.removeCue(id2);
    * }
    * function changeBackground(val) {
-   *   background(val);
+   *   bg(val);
    * }
    * </code></div>
    */
@@ -2821,12 +2821,12 @@
    * <div><code>
    * var audioEl;
    * function setup() {
-   *   background(255, 255, 255);
+   *   bg(255, 255, 255);
    *   audioEl = createAudio('assets/beat.mp3');
    *   //Show the default MediaElement controls, as determined by the web browser
    *   audioEl.showControls();
    *   // schedule calls to changeBackground
-   *   background(200);
+   *   bg(200);
    *   text('Click to change Cue!', 10, 25, 70, 80);
    *   audioEl.addCue(0.5, changeBackground, color(255, 0, 0));
    *   audioEl.addCue(1.0, changeBackground, color(0, 255, 0));
@@ -2842,7 +2842,7 @@
    *   audioEl.addCue(3, changeBackground, color(255, 255, 0));
    * }
    * function changeBackground(val) {
-   *   background(val);
+   *   bg(val);
    * }
    * </code></div>
    */
