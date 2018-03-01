@@ -5,16 +5,17 @@ var ofset = 1;
 let height = 0;
 let angle = 0;
 var param = 0.3;
-var speed = 10;
+var speed = 1;
 function setup() {
    console.log('hej');
    createCanvas(400, 400);
    angleMode(DEGREES);
+
 }
 
 function draw() {
 
-   background(0);
+   background(60);
    translate(200, 200);
    //rotate(-90);
    rectMode(CENTER);

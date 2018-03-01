@@ -13,36 +13,48 @@ var color = 0;
 var param = 0.5;
 var param2 = 0.5;
 var speed = 0.1;
-var charging = 0;
+var charging = 0; //av eller på
 var batteri = 0; //av eller på
+var numLeds = 0;
+var speed2 = 0;
+var offset = 0;
+var size = 0;
+var img;
 
-function Fgreen(){
+function preload() {
+    img = loadImage('Building.png');
+}
 
+function Fgreen(pulsate){
+    let pulsActive = pulsate || false;
     green = full;
-    if(!puls) {
+    if(!puls || !pulsActive) {
         blue = 0;
         red = 0;
     }
 }
 
-function Fred(){
+function Fred(pulsate){
+    let pulsActive = pulsate || false;
     red = full;
-    if(!puls) {
+    if(!puls || !pulsActive) {
         green = 0;
         blue = 0;
     }
 }
 
-function Fyellow(){
+function Fyellow(pulsate){
+    let pulsActive = pulsate || false;
     red = full;
     green = full;
-    if(!puls) {
+    if(!puls || !pulsActive) {
         blue = 0;
     }
 }
 
-function Fwhite(){
-    if(!puls) {
+function Fwhite(pulsate){
+    let pulsActive = pulsate || false;
+    if(!puls || !pulsActive) {
         red = full;
         green = full;
         blue = full;
@@ -50,8 +62,9 @@ function Fwhite(){
 
 }
 
-function Fblack(){
-    if(!puls) {
+function Fblack(pulsate){
+    let pulsActive = pulsate || false;
+    if(!puls || !pulsActive) {
         red = 0;
         green = 0;
         blue = 0;
@@ -59,31 +72,43 @@ function Fblack(){
 
 }
 
-function redgreen(i, a1){
-    if (i < param * 40) {
+function redgreen(i, a1, pulseActive){
+    if (i < param * numLeds) {
         if(blink() && !batteri) {
-            Fred();
+            Fred(pulseActive);
         }else if(a1 && !batteri){
-            Fblack();
+            Fblack(pulseActive);
         }else{
-            Fred();
+            Fred(pulseActive);
         }
     } else {
         if(blink() && batteri) {
-            Fgreen();
+            Fgreen(pulseActive);
         }else if(a1 && batteri){
-            Fblack();
+            Fblack(pulseActive);
         }else{
-            Fgreen();
+            Fgreen(pulseActive);
         }
     }
 }
 
-function redyellow(i, a2){
-    if (i < param * 40) {
-        Fred();
+function redyellow(i, a1, pulseActive){
+    if (i < param * numLeds) {
+        if(blink() && !batteri) {
+            Fred(pulseActive);
+        }else if(a1 && !batteri){
+            Fblack(pulseActive);
+        }else{
+            Fred(pulseActive);
+        }
     } else {
-        Fyellow();
+        if(blink() && batteri) {
+            Fyellow(pulseActive);
+        }else if(a1 && batteri){
+            Fblack(pulseActive);
+        }else{
+            Fyellow(pulseActive);
+        }
     }
 }
 
@@ -97,22 +122,19 @@ function blink() {
 
 function battery(i) {
 
-    if(i > param2*40){
+    if(i > param2*numLeds){
         Fwhite();
     }else{
         if(!charging) {
-            //if(i == param2*40 - 1) {
             if (blink()) {
                 Fgreen();
             } else {
                 Fwhite();
             }
-            //}else{
-            //  Fgreen();
-            //}
         }else{
-            if(i < gp%(param2*40)) {
+            if(i < (gp%(param2*numLeds))) {
                 Fgreen();
+                green = map(sin(abs(i - ((gp%(param2*numLeds))/2))*100), -1, 1, 0 , 255);
             }else{
                 Fwhite();
             }
@@ -122,87 +144,106 @@ function battery(i) {
 }
 
 function setup() {
+
    color = 0;
    param = 0.5;
-   console.log('Welcome');
-   createCanvas(1600, 1600);
+   param2 = 0.6;
+   numLeds = 30;
+   offset = -100;
+   createCanvas(800, 800);
+   size = 30;
+   console.log('Welcome' + height + width);
    angleMode(DEGREES);
+
+
 
 }
 
+function pulsate(i) {
+    red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+    green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+    blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+}
+
 function draw() {
-    sec = second();
-    if (blink()) {
-        if(flip < 1) {
-            flip++;
-            gp = gp + 1;
-        }
-    }else{
-        flip = 0;
-    }
-   background(0);
-   translate(800, 800);
-   rotate(200);
+    rotate(180);
 
-   //imageMode(CENTER);
-   //image(this.img, 0, 0, this.r, this.r);
+    background(160);
+    image(img, 0, 0);
+   sec = second();
+   
+   if(numLeds > (height/16)){
+       numLeds = (height/16)
+   }
 
- //  let hr = hour();
- //  let mn = minute();
- //  let ms = seconds();
-   strokeWeight(16);
+   offset = (map(numLeds, 0, (height/16), 0, width/2) + 150-3);
+
+
+   translate(width/2, height/2);
+   rotate(180);
+
+
+
+   strokeWeight(width/size);
    noFill();
    cirkus += speed;
-
-   //arc(0, 0, 260, 260, 0, hourAngle);
-    for (let w = 0; w < 1000; w+= 250) {
+   flip += 1;
+    if ((flip%speed2) == 1) {
+        console.log(width);
+        gp = gp + 1;
+    }
+    for (let w = 0; w < width; w+= width/8) {
         if (color < 1) {
-            for (let i = 0; i < 40; i++) {
+
+            for (let i = 0; i < numLeds; i++) {
+
                 red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
                 blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
 
                 if(w < 1) {
-                    redgreen(i);
+                    redgreen(i, null, true);
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
-                if(w == 250) {
+                if(w == width/8) {
                     battery(i)
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
-                if(w == 500) {
+                if(w == width/4) {
                     redgreen(i, true);
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
             }
         } else {
-            for (let i = 0; i < 40; i++) {
-                red = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-                green = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
-                blue = map(sin(cirkus + i * (360 / 20)), -1, 1, 0, 255);
+
+            for (let i = 0; i < numLeds; i++) {
+
+                red = map(sin(cirkus + i * (360 / numLeds)), -1, 1, 0, 255);
+                green = map(sin(cirkus + i * (360 / numLeds)), -1, 1, 0, 255);
+                blue = map(sin(cirkus + i * (360 / numLeds)), -1, 1, 0, 255);
 
                 if(w < 1) {
-                    redyellow(i)
+                    redyellow(i, null, true)
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
-                if(w == 250) {
+                if(w == width/8) {
                     battery()
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
-                if(w == 500) {
+                if(w == width/4) {
                     redyellow(i, true)
                     stroke(red, green, blue);
-                    point(w - 400, i * 15 - 400);
+                    point((w - offset), i * width/size - offset);
                 }
 
             }
