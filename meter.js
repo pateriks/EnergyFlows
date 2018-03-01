@@ -166,11 +166,12 @@ function pulsate(i) {
 }
 
 function draw() {
-    rotate(180);
+    rotate(0);
 
     background(160);
-    image(img, 0, 0);
-   sec = second();
+    //image(img, 0, 0);
+    image (img, 200, 100, 200, 400, 100, 0, 100, 0);
+    sec = second();
    
    if(numLeds > (height/16)){
        numLeds = (height/16)
