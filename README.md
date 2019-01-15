@@ -1,2 +1,2 @@
 # EnergyFlows
-This project is developed as a part of investigating energy flow visualization
+This code is developed as a part of investigating energy flow visualization
