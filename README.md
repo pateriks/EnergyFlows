@@ -1,7 +1,9 @@
 # EnergyFlows
 This code is developed as a part of investigating energy flow visualization
 
-There is a lack of comments in the code
+There is a lack of comments in the code but it also makes it more compact
+
+
 The application consists of web pages and a counting server.
 
 The webpages use p5 libraries to do graphics in javascript.
