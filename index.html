@@ -4,14 +4,35 @@
     <style> body {padding: 0; margin: 0; background-color: black;} </style>
     <meta charset="UTF-8">
     <title>Visulization</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+
 </head>
 <body>
 <h1 style="color:white; text-align:center;">Energy Flow</h1>
 <p>
-    <a href="web/meter.html">Visual Energy meter</a>
+    <a id= "meter" href="web/meter.html">Visual Energy meter</a>
 </p>
 <p>
-    <a href="web/3d.html">Visual Energy consumption 3d</a>
+    <a id= "3d" href="web/3d.html">Visual Energy consumption 3d</a>
 </p>
+
+<script>
+    $( "#meter" ).click(function( event ) {
+        $("div#foo").load("http://130.237.212.171:8888");
+        return;
+    });
+</script>
+
+<script>
+    $( "#3d" ).click(function( event ) {
+        $("div#foo").load("http://130.237.212.171:8888");
+        return;
+    });
+</script>
+
+<div id="foo">
+
+</div>
 </body>
 </html>

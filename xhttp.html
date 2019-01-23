@@ -9,7 +9,6 @@
             $("a#the_link").click(function() {
                 $("div#foo").load("hangman.html");
             });
-
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,36 +31,28 @@ $(document).ready(function(){
 <h1 style="text-align: center;">Energy Flow</h1>
 
 <p>
-    <a id= "meter" href="meter.html" class="button" >Visual Energy consumption Meter</a>
+    <a id= "meter" href="web/meter.html" class="button" >Visual Energy consumption Meter</a>
+</p>
+<p>
+    <a id= "3d" href="web/3d.html" class="button" >Visual Energy consumption 3D</a>
 </p>
 
 <div id="foo"> count </div>
 
 <script>
-$('#vote').click(function() {
+$('#meter').click(function() {
     window.location.href = 'http://130.237.212.171:8888/meter';
     return false;
 });
 </script>
 
 <script>
-    $( "#vo" ).click(function( event ) {
+    $( "#3d" ).click(function( event ) {
         $("div#foo").load("http://130.237.212.171:8888");
         return;
     });
 </script>
 
-<button id="votes">Vote</button>
-<p>
-    <a href="id.html" class="button" onclick="loadid()">Visual Energy consumption id</a>
-</p>
-
-<p>
-    <a href="3d.html">Visual Energy consumption 3d</a>
-</p>
-
-<p>
-    <a href="3da.html">Visual Energy consumption 3da</a>
-</p>
+<button id="vote">Vote</button>
 </body>
 </html>
