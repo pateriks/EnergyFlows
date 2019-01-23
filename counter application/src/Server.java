@@ -8,15 +8,17 @@ public class Server {
     private Socket client;
     private Thread thread;
 
+	private final PORT = 8888;
+
     protected void createSocketServer(Clients clients){
         thread = new Thread(() -> {
             try {
-                server_sock = new ServerSocket(8888);
+                server_sock = new ServerSocket(PORT);
                 while (true) {
                     Socket s = server_sock.accept();
                     System.out.println(s.getInetAddress().toString() + " " + s.getPort());
-                    s.setSoLinger(true, 5000);
-                    s.setSoTimeout(1800000);//Half an hour
+                    s.setSoLinger(true, 500);
+                    s.setSoTimeout(1000);//One sec
                     Thread handler = new Thread(new Handler(s, clients));
                     handler.setPriority(Thread.MAX_PRIORITY);
                     handler.start();
